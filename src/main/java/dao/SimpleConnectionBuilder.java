@@ -1,6 +1,7 @@
 package dao;
 
 import config.GlobalConfig;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,6 +21,7 @@ public class SimpleConnectionBuilder implements ConnectionBuilder
         String url = GlobalConfig.getProperty("db.url");
         String login = GlobalConfig.getProperty("db.login");
         String password = GlobalConfig.getProperty("db.password");
-        return null;
+        Connection con = DriverManager.getConnection(url, login, password);
+        return con;
     }
 }

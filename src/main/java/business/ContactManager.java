@@ -22,15 +22,6 @@ public class ContactManager {
         }
     }
 
-    public Long addContactByContract(Contact contact) throws ContactBusinessException {
-        try {
-            contact.setEmail("");
-            return dao.addContact(contact);
-        } catch (ContactDAOException ex) {
-            throw new ContactBusinessException(ex);
-        }
-    }
-
     public void updateContact(Contact contact) throws ContactBusinessException {
         try {
             dao.updateContact(contact);

@@ -12,6 +12,12 @@ public class EditContactDialog extends JDialog implements ActionListener {
     private static final String SAVE = "SAVE";
     private static final String CANCEL = "CANCEL";
 
+    private static final String DIALOG = "dialog";
+    private static final String C_GIVEN = "firstName";
+    private static final String C_SURNAME = "lastName";
+    private static final String C_PHONE = "phone";
+    private static final String C_EMAIL = "email";
+
     private static final int PAD = 10;
     private static final int W_L = 100;
     private static final int W_T = 300;
@@ -43,7 +49,7 @@ public class EditContactDialog extends JDialog implements ActionListener {
     }
 
     private void buildFields() {
-        JLabel lblFirstName = new JLabel("FirstName:");
+        JLabel lblFirstName = new JLabel(GuiResources.getLabel(DIALOG, C_GIVEN) + ":");
         lblFirstName.setHorizontalAlignment(SwingConstants.RIGHT);
         lblFirstName.setBounds(new Rectangle(PAD, 0 * H_B + PAD, W_L, H_B));
         add(lblFirstName);
@@ -51,7 +57,7 @@ public class EditContactDialog extends JDialog implements ActionListener {
         txtFirstName.setBorder(BorderFactory.createEtchedBorder());
         add(txtFirstName);
 
-        JLabel lblLastName = new JLabel("LastName");
+        JLabel lblLastName = new JLabel(GuiResources.getLabel(DIALOG, C_SURNAME) + ":");
         lblLastName.setHorizontalAlignment(SwingConstants.RIGHT);
         lblLastName.setBounds(new Rectangle(PAD, 1 * H_B + PAD, W_L, H_B));
         add(lblLastName);
@@ -59,7 +65,7 @@ public class EditContactDialog extends JDialog implements ActionListener {
         txtLastName.setBorder(BorderFactory.createEtchedBorder());
         add(txtLastName);
 
-        JLabel lblPhone = new JLabel("Phone");
+        JLabel lblPhone = new JLabel(GuiResources.getLabel(DIALOG, C_PHONE) + ":");
         lblPhone.setHorizontalAlignment(SwingConstants.RIGHT);
         lblPhone.setBounds(new Rectangle(PAD, 2 * H_B + PAD, W_L, H_B));
         add(lblPhone);
@@ -67,7 +73,7 @@ public class EditContactDialog extends JDialog implements ActionListener {
         txtPhone.setBorder(BorderFactory.createEtchedBorder());
         add(txtPhone);
 
-        JLabel lblEmail = new JLabel("Email:");
+        JLabel lblEmail = new JLabel(GuiResources.getLabel(DIALOG, C_EMAIL) + ":");
         lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
         lblEmail.setBounds(new Rectangle(PAD, 3 * H_B + PAD, W_L, H_B));
         add(lblEmail);

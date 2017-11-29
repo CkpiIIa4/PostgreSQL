@@ -6,7 +6,9 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class ContactModel extends AbstractTableModel {
-    private static final String[] headers = {"ID", "firstName", "lastName", "phone", "email"};
+
+    private static final String MODEL = "model";
+    private static final String[] HEADERS = {"ID", "firstName", "lastName", "phone", "email"};
     private final List<Contact> contacts;
 
     public ContactModel(List<Contact> contacts) {
@@ -25,7 +27,7 @@ public class ContactModel extends AbstractTableModel {
 
     @Override
     public String getColumnName(int col) {
-        return headers[col];
+        return GuiResources.getLabel(MODEL, HEADERS[col]);
     }
 
     @Override
@@ -40,8 +42,10 @@ public class ContactModel extends AbstractTableModel {
                 return contact.getLastName();
             case 3:
                 return contact.getPhone();
-            default:
+            case 4:
                 return contact.getEmail();
+            default:
+                return "";
 
 
         }

@@ -6,10 +6,10 @@ import java.util.Properties;
 
 public class GlobalConfig
 {
-    private static final String CONFIG_NAME = "contact.properties";
     private static final Properties GLOBAL_CONFIG = new Properties();
+    private static final String CONFIG_NAME = "src/main/resources/contact.properties";
 
-    private static void initGlobalConfig() throws IOException {
+    public static void initGlobalConfig() throws IOException {
         initGlobalConfig(null);
     }
 

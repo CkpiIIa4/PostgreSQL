@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.util.List;
+import java.util.PropertyResourceBundle;
 
 public class ContactFrame extends JFrame implements ActionListener {
     private static final String FRAME = "frame";
@@ -21,10 +22,13 @@ public class ContactFrame extends JFrame implements ActionListener {
     private static final String EDIT = "EDIT";
     private static final String DELETE = "DELETE";
 
-    private final ContactManager contactManager = new ContactManager();
-    private final JTable contactTable = new JTable();
+    private final ContactManager contactManager;
+    private final JTable contactTable;
+    private static final String FILENAME = "resources/skyscrapper";
 
     public ContactFrame() {
+        contactTable = new JTable();
+        contactManager = new ContactManager();
         contactTable.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         GridBagLayout gridbag = new GridBagLayout();
@@ -36,10 +40,10 @@ public class ContactFrame extends JFrame implements ActionListener {
         JPanel btnPanel = new JPanel();
         btnPanel.setLayout(gridbag);
 
-        btnPanel.add(createButton(gridbag, gbc, GuiResource.getLabel(FRAME, C_REFRESH), LOAD));
-        btnPanel.add(createButton(gridbag, gbc, GuiResource.getLabel(FRAME, C_ADD), ADD));
-        btnPanel.add(createButton(gridbag, gbc, GuiResource.getLabel(FRAME, C_UPDATE), EDIT));
-        btnPanel.add(createButton(gridbag, gbc, GuiResource.getLabel(FRAME, C_DELETE), DELETE));
+        btnPanel.add(createButton(gridbag, gbc, GuiResources.getLabel(FRAME, C_REFRESH), LOAD));
+        btnPanel.add(createButton(gridbag, gbc, GuiResources.getLabel(FRAME, C_ADD), ADD));
+        btnPanel.add(createButton(gridbag, gbc, GuiResources.getLabel(FRAME, C_UPDATE), EDIT));
+        btnPanel.add(createButton(gridbag, gbc, GuiResources.getLabel(FRAME, C_DELETE), DELETE));
 
         JPanel left = new JPanel();
         left.setLayout(new BorderLayout());
@@ -108,7 +112,7 @@ public class ContactFrame extends JFrame implements ActionListener {
         if (sr != -1) {
             Long id = Long.parseLong(contactTable.getModel().getValueAt(sr, 0).toString());
             Contact cnt = contactManager.getContact(id);
-            EditContactDialog ecd = new EditContactDialog(contactManager.getContact(id));
+            EditContactDialog ecd = new EditContactDialog(cnt);
             saveContact(ecd);
         } else {
             JOptionPane.showMessageDialog(this, "You have to select the row for editing");

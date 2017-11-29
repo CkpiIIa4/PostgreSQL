@@ -1,46 +1,50 @@
 package test;
 
-import business.ContactManager;
-import entity.Contact;
-import exception.ContactBusinessException;
-
-import java.util.List;
+import config.GlobalConfig;
+import gui.ContactFrame;
+import gui.GuiResources;
 
 public class ContactTest {
-    public static void main(String[] args) throws ContactBusinessException {
-        ContactManager cm = new ContactManager();
+    public static void main(String[] args) {
 
-        Contact c1 = new Contact("Mark", "Nukem", "+38-063-111-22-33", "dukenukem@gmail.com");
-        Contact c2 = new Contact("Mario", "Super", "+38-067-999-88-77", "supermario@gmail.com");
-        Contact c3 = new Contact("Frog", "Crazy", "+38-099-567-89-90", "crazyfrog@gmail.com");
-
-        System.out.println("ADD CONTACT ==========");
-        Long cId1 = cm.addContact(c1);
-        Long cId2 = cm.addContact(c2);
-        Long cId3 = cm.addContact(c3);
-        List<Contact> result1 = cm.findContacts();
-        for (Contact c : result1) {
-            System.out.println(c);
-        }
-
-        System.out.println("UPDATE CONTACT ==============");
-        Contact change = new Contact(cId1, "Duke", "Nukem", "+38-063-111-22-33", "dukenukem@gmail.com");
-        cm.updateContact(change);
-        List<Contact> result2 = cm.findContacts();
-        for(Contact c : result2) {
-            System.out.println(c);
-        }
-
-        System.out.println("DELETE CONTACT ==============");
-        cm.deleteContact(cId3);
-        List<Contact> result3 = cm.findContacts();
-        for(Contact c : result3) {
-            System.out.println(c);
-        }
-
-        System.out.println("GET CONTACT =============");
-        Contact contact = cm.getContact(cId2);
-        System.out.println(contact);
+    /*    ContactTest ct = new ContactTest();
+        ct.testDatabase();
     }
 
+        private void testDatabase() {
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            String url = "jdbc:postgresql://localhost:5432/contactdb";
+            String login = "postgres";
+            String password = "postgres";
+            Connection con = DriverManager.getConnection(url, login, password);
+            try {
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM JC_CONTACT");
+                while (rs.next()) {
+                    String str = rs.getString("contact_id") + ":" + rs.getString(2);
+                    System.out.println("Contact:" + str);
+                }
+                rs.close();
+                stmt.close();
+            } finally {
+                con.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
+
+
+        try {
+            GlobalConfig.initGlobalConfig();
+            GuiResources.initComponentResources();
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+            return;
+        }
+        ContactFrame cf = new ContactFrame();
+        cf.setVisible(true);
+    }
 }

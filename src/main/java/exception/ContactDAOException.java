@@ -11,7 +11,6 @@ public class ContactDAOException extends Exception
 
     public ContactDAOException(Throwable cause) {
         super (cause);
-
     }
 
     public ContactDAOException(String message, Throwable cause) {

@@ -7,6 +7,7 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.ideaLibSources/postgresql-9.4.1212-sources.jar!/" />
+      <root url="file://$PROJECT_DIR$/src/main/resources" />
     </SOURCES>
   </library>
 </component>
