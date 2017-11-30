@@ -2,12 +2,12 @@ package gui;
 
 import entity.Contact;
 
-import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import java.util.List;
 
 public class ContactModel extends AbstractTableModel {
 
-    private static final String MODEL = "model";
+    private static final String MODEL = "model.";
     private static final String[] HEADERS = {"ID", "firstName", "lastName", "phone", "email"};
     private final List<Contact> contacts;
 
@@ -27,7 +27,8 @@ public class ContactModel extends AbstractTableModel {
 
     @Override
     public String getColumnName(int col) {
-        return GuiResources.getLabel(MODEL, HEADERS[col]);
+
+        return GuiResources.getProperty(MODEL + HEADERS[col]);
     }
 
     @Override
