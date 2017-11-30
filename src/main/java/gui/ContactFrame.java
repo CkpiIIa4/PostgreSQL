@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.PropertyResourceBundle;
 
 public class ContactFrame extends JFrame implements ActionListener {
-    private static final String FRAME = "frame";
+    private static final String FRAME = "frame.";
     private static final String C_REFRESH = "refresh";
     private static final String C_ADD = "add";
     private static final String C_UPDATE = "update";
@@ -24,7 +24,6 @@ public class ContactFrame extends JFrame implements ActionListener {
 
     private final ContactManager contactManager;
     private final JTable contactTable;
-    private static final String FILENAME = "resources/skyscrapper";
 
     public ContactFrame() {
         contactTable = new JTable();
@@ -40,10 +39,10 @@ public class ContactFrame extends JFrame implements ActionListener {
         JPanel btnPanel = new JPanel();
         btnPanel.setLayout(gridbag);
 
-        btnPanel.add(createButton(gridbag, gbc, GuiResources.getLabel(FRAME, C_REFRESH), LOAD));
-        btnPanel.add(createButton(gridbag, gbc, GuiResources.getLabel(FRAME, C_ADD), ADD));
-        btnPanel.add(createButton(gridbag, gbc, GuiResources.getLabel(FRAME, C_UPDATE), EDIT));
-        btnPanel.add(createButton(gridbag, gbc, GuiResources.getLabel(FRAME, C_DELETE), DELETE));
+        btnPanel.add(createButton(gridbag, gbc, GuiResources.getProperty(FRAME + C_REFRESH), LOAD));
+        btnPanel.add(createButton(gridbag, gbc, GuiResources.getProperty(FRAME + C_ADD), ADD));
+        btnPanel.add(createButton(gridbag, gbc, GuiResources.getProperty(FRAME + C_UPDATE), EDIT));
+        btnPanel.add(createButton(gridbag, gbc, GuiResources.getProperty(FRAME + C_DELETE), DELETE));
 
         JPanel left = new JPanel();
         left.setLayout(new BorderLayout());

@@ -1,29 +1,43 @@
 package gui;
 
-import config.GlobalConfig;
-
-import java.util.Locale;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 
 public class GuiResources {
 
-    private static final String RESOURCES = "src/main/resources/ContactResources";
-    private static final String LANGUAGE = "language";
+    private static final String RESOURCES = "src/main/resources/ContactResources_en_US.properties";
+    private static final Properties CONFIG_RES = new Properties();
 
-    private static PropertyResourceBundle components;
+    public static void initComponentResources() throws IOException {
+        initComponentResources(null);
+    }
+
+    public static void initComponentResources(String name) throws IOException {
+        if (name != null && !name.trim().isEmpty()) {
+            CONFIG_RES.load(new FileReader(name));
+        } else {
+            CONFIG_RES.load(new FileReader(RESOURCES));
+        }
+    }
+
+    public static String getProperty(String property) {
+        return CONFIG_RES.getProperty(property);
+    }
+
+    /*private static PropertyResourceBundle components = null;
 
     public static void initComponentResources() {
         String lang = GlobalConfig.getProperty(LANGUAGE);
-        ResourceBundle bundle = ResourceBundle.getBundle("ContactResources", new Locale(lang));
         if (lang != null && !lang.trim().isEmpty()) {
-            components = (PropertyResourceBundle) bundle;
-        } else
+            components = (PropertyResourceBundle) PropertyResourceBundle.getBundle(RESOURCES, new Locale(lang));
+        } else {
             components = (PropertyResourceBundle) PropertyResourceBundle.getBundle(RESOURCES);
+        }
     }
 
     public static String getLabel(String formId, String componentId) {
         return components.getString(formId + "." + componentId);
-    }
+    }*/
 
 }
