@@ -6,8 +6,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class PostgresConnectionBuilder implements ConnectionBuilder
-{
+public class PostgresConnectionBuilder implements ConnectionBuilder {
+
     public PostgresConnectionBuilder() {
         try {
             Class.forName(GlobalConfig.getProperty("db.driver.class"));
@@ -21,8 +21,7 @@ public class PostgresConnectionBuilder implements ConnectionBuilder
         String url = GlobalConfig.getProperty("db.url");
         String login = GlobalConfig.getProperty("db.login");
         String password = GlobalConfig.getProperty("db.password");
-        Connection con = DriverManager.getConnection(url, login, password);
-        return con;
+        return DriverManager.getConnection(url, login, password);
     }
 
 
