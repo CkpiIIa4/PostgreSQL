@@ -22,7 +22,7 @@ public class ContactDbDAO implements ContactDAO
     private static final String DELETE
             = "DELETE FROM jc_contact WHERE contact_id=?";
 
-    private ConnectionBuilder builder = new SimpleConnectionBuilder();
+    private ConnectionBuilder builder = new PostgresConnectionBuilder();
 
     private Connection getConnection() throws SQLException {
         return builder.getConnection();

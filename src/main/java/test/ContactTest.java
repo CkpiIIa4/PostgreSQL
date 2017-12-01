@@ -1,50 +1,54 @@
 package test;
 
-import config.GlobalConfig;
-import gui.ContactFrame;
-import gui.GuiResources;
+import business.CustomersManger;
+import entity.Customers;
+import exception.ContactBusinessException;
 
 public class ContactTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ContactBusinessException {
 
     /*    ContactTest ct = new ContactTest();
         ct.testDatabase();
     }
 
-        private void testDatabase() {
+    private void testDatabase() {
 
+        System.out.println("------- Проверка подключения к MySQL -------");
+
+        Connection connection = null;
         try {
-            Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/contactdb";
-            String login = "postgres";
-            String password = "postgres";
-            Connection con = DriverManager.getConnection(url, login, password);
-            try {
-                Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM JC_CONTACT");
-                while (rs.next()) {
-                    String str = rs.getString("contact_id") + ":" + rs.getString(2);
-                    System.out.println("Contact:" + str);
-                }
-                rs.close();
-                stmt.close();
-            } finally {
-                con.close();
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/Customers",
+                    "root", "mySQL");
+        } catch (SQLException ex) {
+            Logger.getLogger(ContactTest.class.getName()).log(Level.SEVERE,
+                    null, ex);
+        }
+
+        if(null != connection) {
+            System.out.println("------- Подключение установлено -------");
+        } else {
+            System.out.println("------- Подключение НЕ установлено -------");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }*/
 
 
-        try {
+        /*try {
             GlobalConfig.initGlobalConfig();
             GuiResources.initComponentResources();
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
             ex.printStackTrace(System.out);
             return;
         }
+
         ContactFrame cf = new ContactFrame();
-        cf.setVisible(true);
+        cf.setVisible(true);*/
+        
+        CustomersManger cm = new CustomersManger();
+        cm.findCustomers();
+        System.out.println( cm.findCustomers());
     }
 }
+

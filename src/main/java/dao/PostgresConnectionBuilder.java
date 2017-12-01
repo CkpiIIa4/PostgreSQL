@@ -6,9 +6,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SimpleConnectionBuilder implements ConnectionBuilder
+public class PostgresConnectionBuilder implements ConnectionBuilder
 {
-    public SimpleConnectionBuilder () {
+    public PostgresConnectionBuilder() {
         try {
             Class.forName(GlobalConfig.getProperty("db.driver.class"));
         } catch (ClassNotFoundException ex) {
@@ -24,4 +24,6 @@ public class SimpleConnectionBuilder implements ConnectionBuilder
         Connection con = DriverManager.getConnection(url, login, password);
         return con;
     }
+
+
 }

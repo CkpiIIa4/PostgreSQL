@@ -23,6 +23,6 @@ public class GlobalConfig
 
     public static String getProperty(String property) {
         return GLOBAL_CONFIG.getProperty(property);
-    }
+}
 
 }
